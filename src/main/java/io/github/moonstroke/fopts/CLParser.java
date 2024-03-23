@@ -14,6 +14,22 @@ import java.util.function.Consumer;
 public class CLParser {
 
 	/**
+	 * Indicates the character used to prefix option names.
+	 */
+	public static enum OptStyle {
+		/**
+		 * The options are prefixed with {@code -} for short names and {@code --} for
+		 * long ones.
+		 */
+		POSIX,
+		/** The options are prefixed with {@code -} for both short and long names. */
+		GNU_LONG,
+		/** The options names are prefixed with {@code /}. */
+		WINDOWS,
+	}
+
+
+	/**
 	 * Declare an option taking no argument.
 	 *
 	 * @param name     The name of the option
@@ -63,6 +79,17 @@ public class CLParser {
 		throw new UnsupportedOperationException("Not implemented yet"); // TODO
 	}
 
+
+	/**
+	 * Specify the style of options that this parser will be given.
+	 *
+	 * @param optStyle The style of options
+	 *
+	 * @return this object
+	 */
+	public CLParser optStyle(OptStyle optStyle) {
+		throw new UnsupportedOperationException("Not implemented yet"); // TODO
+	}
 
 	/**
 	 * Specify to raise an error when an argument is missing to an option, instead
