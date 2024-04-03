@@ -1,5 +1,6 @@
 package io.github.moonstroke.fopts.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -36,29 +37,33 @@ class FOptsCLParserNullaryOptionPosixTest {
 	@Test
 	void testAddOptionShortName() {
 		parser.addOption(SHORT_NAME, callback);
-		parser.parse(new String[] { SHORT_OPTION });
+		int nbArgsProcessed = parser.parse(new String[] { SHORT_OPTION });
 		assertTrue(callback::wasCalled);
+		assertEquals(nbArgsProcessed, 1);
 	}
 
 	@Test
 	void testAddOptionLongName() {
 		parser.addOption(LONG_NAME, callback);
-		parser.parse(new String[] { LONG_OPTION });
+		int nbArgsProcessed = parser.parse(new String[] { LONG_OPTION });
 		assertTrue(callback::wasCalled);
+		assertEquals(nbArgsProcessed, 1);
 	}
 
 	@Test
 	void testAddOptionBothNamesParseShortName() {
 		parser.addOption(LONG_NAME, SHORT_NAME, callback);
-		parser.parse(new String[] { SHORT_OPTION });
+		int nbArgsProcessed = parser.parse(new String[] { SHORT_OPTION });
 		assertTrue(callback::wasCalled);
+		assertEquals(nbArgsProcessed, 1);
 	}
 
 	@Test
 	void testAddOptionBothNamesParseLongName() {
 		parser.addOption(LONG_NAME, SHORT_NAME, callback);
-		parser.parse(new String[] { LONG_OPTION });
+		int nbArgsProcessed = parser.parse(new String[] { LONG_OPTION });
 		assertTrue(callback::wasCalled);
+		assertEquals(nbArgsProcessed, 1);
 	}
 
 	@Test
@@ -77,21 +82,24 @@ class FOptsCLParserNullaryOptionPosixTest {
 	@Test
 	void testAddOptionBothNamesParseShortNameIsCaseSensitive() {
 		parser.addOption(LONG_NAME, SHORT_NAME, callback);
-		parser.parse(new String[] { SHORT_OPTION_UPPERCASE });
+		int nbArgsProcessed = parser.parse(new String[] { SHORT_OPTION_UPPERCASE });
 		assertFalse(callback::wasCalled);
+		assertEquals(nbArgsProcessed, 1);
 	}
 
 	@Test
 	void testAddOptionBothNamesParseLongNameIsCaseSensitive() {
 		parser.addOption(LONG_NAME, SHORT_NAME, callback);
-		parser.parse(new String[] { LONG_OPTION_UPPERCASE });
+		int nbArgsProcessed = parser.parse(new String[] { LONG_OPTION_UPPERCASE });
 		assertFalse(callback::wasCalled);
+		assertEquals(nbArgsProcessed, 1);
 	}
 
 	@Test
 	void testAddOptionBothNamesParseMarkerEndsParsing() {
 		parser.addOption(LONG_NAME, SHORT_NAME, callback);
-		parser.parse(new String[] { OPTIONS_END_MARKER, LONG_OPTION });
+		int nbArgsProcessed = parser.parse(new String[] { OPTIONS_END_MARKER, LONG_OPTION });
 		assertFalse(callback::wasCalled);
+		assertEquals(nbArgsProcessed, 0);
 	}
 }
