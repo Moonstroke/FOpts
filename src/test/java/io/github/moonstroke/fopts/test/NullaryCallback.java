@@ -8,7 +8,7 @@ import java.util.concurrent.Callable;
  *
  * @author Moonstroke
  */
-public class NullaryCallback implements Callable<Void> {
+class NullaryCallback implements Callable<Void> {
 
 	private boolean called = false;
 

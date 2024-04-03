@@ -9,7 +9,7 @@ import java.util.function.Consumer;
  *
  * @author Moonstroke
  */
-public class UnaryCallback implements Consumer<String> {
+class UnaryCallback implements Consumer<String> {
 
 	private boolean called = false;
 	private String argument = null;
